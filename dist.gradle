@@ -81,7 +81,7 @@ MavenPom customizePom(MavenPom pom, Project gradleProject) {
             }
         }
         
-        groupId = "org.elasticsearch"
+        groupId = "com.relaynetwork"
         artifactId = project.archivesBaseName
     }
     return pom
