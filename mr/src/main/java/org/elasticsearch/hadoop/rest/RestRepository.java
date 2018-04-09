@@ -189,10 +189,12 @@ public class RestRepository implements Closeable, StatsAware {
     }
 
     public BulkResponse tryFlush() {
+        lazyInitWriting();
         return bulkProcessor.tryFlush();
     }
 
     public void flush() {
+        lazyInitWriting();
         bulkProcessor.flush();
     }
 
