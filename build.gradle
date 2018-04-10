@@ -51,6 +51,31 @@ allprojects {
     apply plugin: 'jacoco'
     apply plugin: 'es.hadoop.build'
     apply from: "$rootDir/dist.gradle"
+
+    apply plugin: 'maven-publish'
+
+    publishing {
+      publications {
+        mavenJava(MavenPublication) {
+          from components.java
+          groupId 'com.relaynetwork'
+          artifactId 'elasticsearch-hadoop'
+          version '6.2.4'
+        }
+      }
+    }
+
+    publishing {
+      repositories {
+        maven {
+          url "s3://relay-maven-repo/releases/"
+          credentials(AwsCredentials) {
+            accessKey System.env.AWS_ACCESS_KEY
+            secretKey System.env.AWS_SECRET_KEY
+          }
+        }
+      }
+    }
 }
 
 println "Building version [$version]"
