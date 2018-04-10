@@ -60,7 +60,7 @@ allprojects {
           from components.java
           groupId 'com.relaynetwork'
           artifactId 'elasticsearch-hadoop'
-          version '6.2.4'
+          version project.version
         }
       }
     }
